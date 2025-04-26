@@ -1,4 +1,4 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
@@ -25,18 +25,18 @@ return {
       underline = true,
     },
     -- passed to `vim.filetype.add`
-    filetypes = {
-      -- see `:h vim.filetype.add` for usage
-      extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
-      },
-    },
+    -- filetypes = {
+    --   -- see `:h vim.filetype.add` for usage
+    --   extension = {
+    --     foo = "fooscript",
+    --   },
+    --   filename = {
+    --     [".foorc"] = "fooscript",
+    --   },
+    --   pattern = {
+    --     [".*/etc/foo/.*"] = "fooscript",
+    --   },
+    -- },
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
@@ -58,6 +58,12 @@ return {
       -- first key is the mode
       n = {
         -- second key is the lefthand side of the map
+
+        ["<Leader>m"] = { desc = "Macros" },
+        ["<leader>mc"] = {
+          "/on branch<cr>f/ly$ggP:s/-/ /g<cr>:s/ /-/<cr>:s/ / - /<cr>",
+          desc = "Auto commit message from branch `ENG-XXX-Desc-words",
+        },
 
         -- navigate buffer tabs
         ["]b"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
@@ -82,4 +88,5 @@ return {
       },
     },
   },
-}
+} -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
+-- Configuration documentation can be found with `:h astrocore`
